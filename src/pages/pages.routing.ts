@@ -1,5 +1,5 @@
 import { Route } from '@vaadin/router'
-
+import { useRouter } from '@/shared'
 export const routes: Route[] = [
     {
         path: '/',
@@ -14,7 +14,20 @@ export const routes: Route[] = [
                 action: async () => {
                     await import('./blog/Blog')
                 }
+            },
+            {
+                path: 'test',
+                component: 'web-test',
+                action: async () => {
+                    await import('./blog/Test')
+                }
             }
         ]
     }
 ]
+export const router = useRouter({
+    isHash: false,
+    outlet: document.querySelector('#outlet')
+})
+
+router.setRoutes(routes)
