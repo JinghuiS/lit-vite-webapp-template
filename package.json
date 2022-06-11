@@ -7,11 +7,6 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host --port 5050"
   },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc/eslint-config"
-    ]
-  },
   "dependencies": {
     "@vaadin/button": "^23.1.0",
     "@vaadin/date-picker": "^23.1.0",
@@ -20,13 +15,12 @@
     "lit": "^2.2.5"
   },
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^1.8.2",
+    "autoprefixer": "^10.4.7",
+    "prettier": "^2.6.2",
+    "rollup-plugin-postcss-lit": "^2.0.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
-    "@open-wc/eslint-config": "^7.0.0",
-    "@vitejs/plugin-legacy": "^1.8.2",
-    "eslint": "^8.17.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.6.2",
-    "unocss": "^0.38.1"
+    "unocss": "^0.38.2"
   }
 }

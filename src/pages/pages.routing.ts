@@ -9,7 +9,7 @@ export const routes: Route[] = [
         },
         children: [
             {
-                path: '',
+                path: 'blog',
                 component: 'web-blog',
                 action: async () => {
                     await import('./blog/Blog')

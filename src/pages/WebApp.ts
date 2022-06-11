@@ -1,64 +1,56 @@
-import { UnoCss } from '@/shared'
-import { html, css, LitElement } from 'lit'
+import { css, html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { StoreController } from 'exome/lit'
 import { GlobalService } from './global.service'
 import { router } from './pages.routing'
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
+import { GlobalCss } from '@/shared/styles'
+
 @customElement('web-app')
 export class WebApp extends LitElement {
-    static styles = css`
-        :host {
-            display: block;
-            border: solid 1px gray;
-            padding: 16px;
-            max-width: 800px;
-        }
-        ${UnoCss}
-    `
-
     private GlobalService = new StoreController(this, GlobalService)
-
     @property()
     name = 'World'
-
+    static styles = [
+        GlobalCss,
+        css`
+            :host {
+                display: block;
+                border: solid 1px gray;
+                padding: 16px;
+                max-width: 800px;
+            }
+            @unocss-placeholder;
+        `
+    ]
     @property({ type: Number })
     count = 0
 
     render() {
         return html`
-            <div>
-                <div class="flex">
-                    <vaadin-button
-                        @click=${() => {
-                            router.go('/')
-                        }}
-                        part="button"
-                    >
-                        blog
-                    </vaadin-button>
-                    <vaadin-button
-                        @click=${() => {
-                            router.go('/test')
-                        }}
-                        part="button"
-                    >
-                        test
-                    </vaadin-button>
-                </div>
-                <h1>Hello, ${this.name}!</h1>
-                <vaadin-button @click=${this._onClick} part="button">
-                    Click Count: ${this.GlobalService.store.count}
+            <div class="flex ">
+                <vaadin-button
+                    @click=${() => {
+                        router.go('/blog')
+                    }}
+                    part="button"
+                >
+                    blog
                 </vaadin-button>
-                <div class="mb-40px">child:</div>
+                <vaadin-button
+                    @click=${() => {
+                        router.go('/test')
+                    }}
+                    part="button"
+                >
+                    test
+                </vaadin-button>
             </div>
-
+            <h1>Hello, ${this.name}!</h1>
+            <div class="top-117px">child:</div>
             <slot></slot>
+            <vaadin-button @click=${this._onClick} part="button">
+                Click Count: ${this.GlobalService.store.count}
+            </vaadin-button>
         `
     }
 

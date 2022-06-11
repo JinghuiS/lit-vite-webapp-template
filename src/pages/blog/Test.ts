@@ -1,4 +1,3 @@
-import { UnoCss } from '@/shared'
 import { css, html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
@@ -9,9 +8,8 @@ export class WebTest extends LitElement {
             font-size: '20px';
             color: #fff;
         }
-        ${UnoCss}
+        @unocss-placeholder;
     `
-
     render() {
         return html` <h1>Test:</h1> `
     }
